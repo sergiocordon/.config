@@ -42,18 +42,12 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
-" Tabs movement
-"nnoremap <C-Left> :tabprevious<CR>
-"nnoremap <C-Right> :tabnext<CR>
-
-
-
 " Easy CAPS ctrl + u for capitalize WORDS
 inoremap <C-u> <ESC>vaw~a
 nnoremap <C-u> vaw~a<Esc>
 
 " buffer close
-nmap <F4> :bd<CR>
+nmap <S-Q> :bd<CR>
 
 " Move to text buffer
 nnoremap <TAB> :bnext<CR>

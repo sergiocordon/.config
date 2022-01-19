@@ -46,7 +46,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Lightspeed -> s + letter to go to that letter anywhere
-"Plug 'ggandor/lightspeed.nvim'
+Plug 'ggandor/lightspeed.nvim'
 
 "Startify
 Plug 'mhinz/vim-startify'
