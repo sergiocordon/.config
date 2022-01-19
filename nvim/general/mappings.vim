@@ -46,18 +46,18 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 "nnoremap <C-Left> :tabprevious<CR>
 "nnoremap <C-Right> :tabnext<CR>
 
-" tab close
-nmap <F4> :tabclose<CR>
 
 
 " Easy CAPS ctrl + u for capitalize WORDS
 inoremap <C-u> <ESC>vaw~a
 nnoremap <C-u> vaw~a<Esc>
 
+" buffer close
+nmap <F4> :bd<CR>
 
-" TAB in general mode will move to text buffer
+" Move to text buffer
 nnoremap <TAB> :bnext<CR>
-" SHIFT-TAB will go back
+" Previous buffer
 nnoremap <S-TAB> :bprevious<CR>
 
 
