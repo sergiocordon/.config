@@ -1,6 +1,7 @@
 *
 !.gitignore
 
+!.zshrc
 !/nvim
 !/nvim/*
 !/nvim/general/*
