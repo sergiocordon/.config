@@ -1,0 +1,12 @@
+*
+!.gitignore
+
+!/nvim
+!/nvim/*
+!/nvim/general/*
+!/alacritty
+!/alacritty/*
+
+/nvim/.netrwhist
+/nvim/autoload
+/nvim/plugged
