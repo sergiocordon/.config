@@ -80,6 +80,9 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 " Python sense -> movements
 Plug 'jeetsukumaran/vim-pythonsense'
 
+" Indent lines
+Plug 'nathanaelkane/vim-indent-guides'
+
 " Snippets
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
