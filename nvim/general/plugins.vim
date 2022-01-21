@@ -11,6 +11,11 @@ call plug#begin('~/.config/nvim/plugged')
 "   sudo apt install nodejs && sudo apt install npm  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'neoclide/coc-json'
+Plug 'fannheyward/coc-pyright'  " Errores en python
+Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
+Plug 'neoclide/coc-tsserver'
+Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
 
 " Theme
 Plug 'morhetz/gruvbox'
@@ -38,6 +43,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+"Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'AckslD/nvim-neoclip.lua'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -90,35 +97,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 "source $HOME/.config/nvim/vim-plug/coc.vim
-
-
-
-
-" After install COC:
-  " Need to run :CocInstall coc-json coc-pyright coc-snippets coc-vimlsp coc-tsserver coc-jedi
-  " Need to run :CocConfig
-"{
-"  "coc.preferences.formatOnSaveFiletypes": [
-"    "css",
-"    "markdown",
-"    "javascript",
-"    "graphql",
-"    "html",
-"    "yaml",
-"    "json",
-"    "python"
-"  ],
-"  "diagnostic.errorSign": "✖",
-"  "diagnostic.warningSign": "⚠",
-"  "diagnostic.infoSign": "ℹ",
-"  "diagnostic.hintSign": "➤",
-"
-"  "python.linting.enabled": true,
-"  "python.linting.pylintEnabled": true,
-"  "python.pythonPath": "python",
-"  "python.analysis.typeCheckingMode": "off",
-"  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"]
-"}
 
 
 " Dap

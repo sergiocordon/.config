@@ -107,6 +107,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+"    Pydocstring
+nmap <silent> ga <Plug>(coc-codeaction-line)
+xmap <silent> ga <Plug>(coc-codeaction-selected)
 
 " Markdown
 nmap <Leader>md :MarkdownPreview<CR>
@@ -130,6 +133,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>ft <cmd>Telescope git_files<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
+
 
  
 " Neoterm

@@ -9,14 +9,18 @@
     "json",
     "python"
   ],
-  "diagnostic.errorSign": "✖",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.infoSign": "ℹ",
-  "diagnostic.hintSign": "➤",
+  "diagnostic.errorSign": "✕",
+  "diagnostic.warningSign": "◬",
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": "⋗",
 
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.pythonPath": "python",
   "python.analysis.typeCheckingMode": "off",
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"]
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
+  
+  "pydocstring.formater": "google",
+
+  "jedi.enable": true,
 }
