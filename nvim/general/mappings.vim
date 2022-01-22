@@ -79,12 +79,14 @@ nnoremap <Leader>m :MaximizerToggle!<CR>
 " Coc
 "    GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gr <Plug>(coc-references)
+
 "    Use <C-space> to trigger completion.
 inoremap <silent><expr> <C-space> coc#refresh()
-" Use K to show documentation in preview window.
+
+"    Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -98,6 +100,7 @@ endfunction
 
 "    Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
 "    Move with tab 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -112,9 +115,6 @@ endfunction
 
 
 "    Pydocstring
-"nmap <silent> ga <Plug>(coc-codeaction-line)
-"xmap <silent> ga <Plug>(coc-codeaction-selected)
-"nmap <silent> ga <Plug>(pydocstring)
 nmap <silent> ga :Docstring
 
 
@@ -136,8 +136,9 @@ nnoremap <leader>g0 :diffget<CR>  " Coger del otro lado en diff
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>ft <cmd>Telescope git_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fp <cmd>lua require('telescope.builtin').live_grep{ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] }<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
 

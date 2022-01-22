@@ -10,7 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Autocomplete pluggins needs
 "   sudo apt install nodejs && sudo apt install npm  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main'}
+"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main'}
 Plug 'neoclide/coc-json'
 Plug 'fannheyward/coc-pyright'  " Errores en python
 Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
