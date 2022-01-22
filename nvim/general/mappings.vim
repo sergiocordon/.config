@@ -9,6 +9,9 @@
 let g:mapleader = "\<Space>"
 
 
+" Find highlight group under cursor for changing colorschemes
+"nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " Autoclose brackets
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -46,9 +49,9 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 inoremap <C-u> <ESC>vaw~a
 nnoremap <C-u> vaw~a<Esc>
 
+
 " buffer close
 nmap <S-Q> :bd<CR>
-
 " Move to text buffer
 nnoremap <TAB> :bnext<CR>
 " Previous buffer
@@ -107,9 +110,13 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+
 "    Pydocstring
-nmap <silent> ga <Plug>(coc-codeaction-line)
-xmap <silent> ga <Plug>(coc-codeaction-selected)
+"nmap <silent> ga <Plug>(coc-codeaction-line)
+"xmap <silent> ga <Plug>(coc-codeaction-selected)
+"nmap <silent> ga <Plug>(pydocstring)
+nmap <silent> ga :Docstring
+
 
 " Markdown
 nmap <Leader>md :MarkdownPreview<CR>
@@ -134,7 +141,6 @@ nnoremap <leader>ft <cmd>Telescope git_files<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
 
-
  
 " Neoterm
 nnoremap <leader>lc :split term://zsh<CR>
@@ -149,20 +155,22 @@ vmap <C-q> <Plug>NERDCommenterToggle<CR>gv
 nnoremap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <leader>dcb :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
-"nnoremap <leader>dd :w<CR> <bar> :lua require('dapui').open()<CR><bar> :lua require'dap'.continue()<CR>
-"nnoremap <leader>df :lua require('dapui').close()<CR>
-"nnoremap <leader>df :lua require('dapui').toggle()<CR>
+nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
+nnoremap <F12> :lua require'dap'.close()<CR>
+nnoremap <leader>dc :lua require'dap'.close()<CR>
 nnoremap <leader>dt :lua require('dap-python').test_method()<CR>
+nnoremap <leader>df :lua require('dap-python').test_class()<CR>
 nnoremap <leader>dr :lua require'dap'.repl.toggle()<CR>
 nnoremap <F4> :lua require'dap'.up()<CR>
 nnoremap <F3> :lua require'dap'.down()<CR>
 nnoremap <F8> :lua require'dap'.step_over()<cr>
 nnoremap <F7> :lua require'dap'.step_into()<CR>
 nnoremap <F9> :lua require'dap'.step_out()<CR>
-nnoremap <F12> :lua require'dap'.close()<CR>
-nnoremap <leader>df :lua require('dap-python').test_class()<CR>
-vnoremap <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
-nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
+"vnoremap <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+"nnoremap <silent> <leader>ds :lua local w = require('dap-python').widgets; w.centered_float(w.scopes)<CR>
+
+"nnoremap <leader>df :lua require('dapui').close()<CR>
+"nnoremap <leader>df :lua require('dapui').toggle()<CR>
 "nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
 "vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
 "vnoremap <leader>dz <Cmd>lua require("dapui").eval()<CR>
@@ -171,6 +179,21 @@ nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
 "nnoremap <silent> <leader>di :lua require'dap.ui.variables'.hover(function () return vim .fn.expand("<cexpr>") end)<CR>
 "vnoremap <silent> <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
 
+" Rcarriga mappings
+"nnoremap <silent> <M-c> :lua require'dap'.continue()<CR>
+"nnoremap <silent> <M-right> :lua require'dap'.step_over()<CR>
+"nnoremap <silent> <M-down> :lua require'dap'.step_into()<CR>
+"nnoremap <silent> <M-up> :lua require'dap'.step_out()<CR>
+"nnoremap <silent> <M-x> :lua require'dap'.toggle_breakpoint()<CR>
+"nnoremap <silent> <M-t> :lua require('dapui').toggle()<CR>
+"vnoremap <silent> <M-c> <ESC>:lua require('dap-python').debug_selection()<CR>
+"nnoremap <silent> <M-l> :lua require"osv".launch()<CR>
+"nnoremap <silent> <M-k> :lua require'dapui'.eval()<cr>
+"vnoremap <M-k> <Cmd>lua require'dapui'.eval()<cr>
+"nnoremap <silent> <M-m> :lua require'dapui'.float_element()<cr>
+"nnoremap <silent> <M-v> :lua require'dapui'.float_element("scopes")<cr>
+"nnoremap <silent> <M-r> :lua require'dapui'.float_element("repl")<cr>
+"nnoremap <silent> <M-q> :lua require'dap'.disconnect()<cr>
 
 " Salir de la consola
 tnoremap <Esc> <C-\><C-n>

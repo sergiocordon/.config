@@ -10,12 +10,12 @@ call plug#begin('~/.config/nvim/plugged')
 " Autocomplete pluggins needs
 "   sudo apt install nodejs && sudo apt install npm  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main'}
 Plug 'neoclide/coc-json'
 Plug 'fannheyward/coc-pyright'  " Errores en python
 Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
 Plug 'neoclide/coc-tsserver'
-Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
+"Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
 
 " Theme
 Plug 'morhetz/gruvbox'
@@ -44,7 +44,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 "Plug 'nvim-telescope/telescope-media-files.nvim'
-Plug 'AckslD/nvim-neoclip.lua'
+"Plug 'AckslD/nvim-neoclip.lua'
+Plug 'nvim-telescope/telescope-dap.nvim'
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -77,7 +78,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'theHamsta/nvim-dap-virtual-text'
-"Plug 'rcarriga/nvim-dap-ui'
+Plug 'rcarriga/nvim-dap-ui'
 
 " Shemshy -> highligtning
 " pip3 install pynvim --upgrade 
@@ -93,6 +94,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Snippets
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
+
+" Docstring  
+Plug 'pixelneo/vim-python-docstring'
 
 call plug#end()
 
