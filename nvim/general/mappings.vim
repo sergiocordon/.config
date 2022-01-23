@@ -141,6 +141,11 @@ nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>fp <cmd>lua require('telescope.builtin').live_grep{ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] }<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
+nnoremap <leader>fv :lua require'telescope.builtin'.registers{}<CR>
+nnoremap <leader>fv :lua require'telescope.builtin'.marks{}<CR>
+
+nnoremap <leader>gb :lua require'telescope.builtin'.git_branches{}<CR>
+nnoremap <leader>gs :lua require'telescope.builtin'.git_stash{}<CR>
 
  
 " Neoterm

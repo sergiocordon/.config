@@ -27,7 +27,8 @@ set smartindent                         " Makes indenting smart
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
+"set t_Co=256                            " Support 256 colors
+set termguicolors
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set updatetime=300                      " Faster completion
 set fileformat=unix
