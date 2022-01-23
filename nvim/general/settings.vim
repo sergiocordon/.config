@@ -37,16 +37,20 @@ set autoindent                          " Good auto indent
 set noswapfile
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
+
 " For filetypes
 set filetype=on
+
 
 " Show whitespaces
 "set list
 set listchars=eol:$,tab:>-,trail:·
 
+
 " Spell -> to change a word z= or with telescope <leader>fs
 set spelllang=en
 set spell!
+
 
 " Set line numbers 
 set number
@@ -58,6 +62,8 @@ augroup numbertoggle
 augroup END
 set signcolumn=auto
 autocmd ColorScheme * highlight! link SignColumn LineNr
+
+
 
 " Save only read files
 cmap w!! w !sudo tee %
@@ -80,6 +86,8 @@ set foldlevel=99
 colorscheme gruvbox
 set background=dark
 
+" Startify
+let g:startify_custom_header = []
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1  " Show buffers on top

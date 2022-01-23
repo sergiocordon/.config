@@ -45,10 +45,6 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
-" Easy CAPS ctrl + u for capitalize WORDS
-inoremap <C-u> <ESC>vaw~a
-nnoremap <C-u> vaw~a<Esc>
-
 
 " buffer close
 nmap <S-Q> :bd<CR>
@@ -57,9 +53,6 @@ nnoremap <TAB> :bnext<CR>
 " Previous buffer
 nnoremap <S-TAB> :bprevious<CR>
 
-
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 " Better tabbing
