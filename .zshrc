@@ -78,8 +78,8 @@ plugins=(
     git-auto-fetch
     git-prompt
     extract 
-    #zsh-autosuggestions 
-    k 
+    zsh-autosuggestions 
+    #k 
     zsh-syntax-highlighting
     autojump
     vi-mode
@@ -106,8 +106,13 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+
+# COLORS  https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=blue,underline
+#ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue,underline
+#ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -118,7 +123,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
-alias python="python3"
+#alias python="python3"
+alias mv="mv -i"
+alias cp="cp -i"
+alias rm="rm -i"
 
 bindkey -v
 

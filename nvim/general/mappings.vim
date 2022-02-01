@@ -122,9 +122,19 @@ nmap [h <Plug>(GitGutterPrevHunk)
 
 
 " Git - vim fugitive 
-nnoremap <leader>g1 :diffget //2<CR>  " Coger de la izq en merge
-nnoremap <leader>g2 :diffget //3<CR>  " Coger de la dch en merge
-nnoremap <leader>g0 :diffget<CR>  " Coger del otro lado en diff
+"nnoremap <leader>g1 :diffget //2<CR>  " Coger de la izq en merge
+"nnoremap <leader>g2 :diffget //3<CR>  " Coger de la dch en merge
+"nnoremap <leader>g0 :diffget<CR>  " Coger del otro lado en diff
+" Git neogit
+"nnoremap <leader>gg :Neogit<CR>
+"nnoremap <leader>gd :DiffviewOpen<CR>
+"nnoremap <leader>gD :DiffviewOpen master<CR>
+"nnoremap <leader>gl :Neogit log<CR>
+"nnoremap <leader>gp :Neogit push<CR>
+" LazyGit
+nnoremap <leader>gg :LazyGit<CR>
+
+
 
 
 " Telescope

@@ -7,6 +7,8 @@
 
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
+Plug 'nvim-lua/plenary.nvim'  " Needed for most
+
 " Autocomplete pluggins needs
 "   sudo apt install nodejs && sudo apt install npm  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -17,15 +19,23 @@ Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
 Plug 'neoclide/coc-tsserver'
 "Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
 
-" Theme
+" Themes
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 " Maximize panels
 Plug 'szw/vim-maximizer'
 
-" Git    investigar lazy git
-Plug 'tpope/vim-fugitive'  " Windows to git control, call git with :G
+"Icons
+Plug 'ryanoasis/vim-devicons'
+
+" Git    
+"Plug 'tpope/vim-fugitive'  " Windows to git control, call git with :G
 Plug 'airblade/vim-gitgutter'  " Shows git state on the left column
+"Plug 'TimUntersberger/neogit'
+"Plug 'sindrets/diffview.nvim'
+" Lazy git, needs to install lazygit on ubuntu, better with brew
+Plug 'kdheepak/lazygit.nvim'
 
 " Airline (bar on the bottom)
 Plug 'vim-airline/vim-airline' " Bottom bar that shows the state
@@ -40,7 +50,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'BurntSushi/ripgrep'  " To be able to use grep
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 "Plug 'nvim-telescope/telescope-media-files.nvim'
@@ -70,6 +79,9 @@ Plug 'tpope/vim-surround'
 
 " CSV
 Plug 'chrisbra/csv.vim'
+
+" Colors
+Plug 'lilydjwg/colorizer'
 
 " PYTHON -----------------------------------------------------------------
 " recommended pip install neovim; pip3 install neovim
