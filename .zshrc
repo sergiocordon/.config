@@ -130,3 +130,5 @@ alias rm="rm -i"
 
 bindkey -v
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

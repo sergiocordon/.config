@@ -13,11 +13,12 @@ let g:mapleader = "\<Space>"
 "nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Autoclose brackets
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
+inoremap "<TAB> ""<left>
+inoremap <<TAB> <><left>
+inoremap '<TAB> ''<left>
+inoremap (<TAB> ()<left>
+inoremap [<TAB> []<left>
+inoremap {<TAB> {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
@@ -45,14 +46,12 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
-
 " buffer close
 nmap <S-Q> :bd<CR>
 " Move to text buffer
 nnoremap <TAB> :bnext<CR>
 " Previous buffer
 nnoremap <S-TAB> :bprevious<CR>
-
 
 
 " Better tabbing
@@ -107,7 +106,7 @@ function! s:check_back_space() abort
 endfunction
 
 
-"    Pydocstring
+" Pydocstring
 nmap <silent> ga :Docstring
 
 
@@ -132,26 +131,24 @@ nmap [h <Plug>(GitGutterPrevHunk)
 "nnoremap <leader>gl :Neogit log<CR>
 "nnoremap <leader>gp :Neogit push<CR>
 " LazyGit
-nnoremap <leader>gg :LazyGit<CR>
-
-
+"nnoremap <leader>gg :LazyGit<CR>
 
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>ft <cmd>Telescope git_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <leader>fp <cmd>lua require('telescope.builtin').live_grep{ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] }<cr>
-nnoremap <leader>fb <cmd>Telescope file_browser<CR>
-nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
-nnoremap <leader>fv :lua require'telescope.builtin'.registers{}<CR>
-nnoremap <leader>fv :lua require'telescope.builtin'.marks{}<CR>
+"nnoremap <leader>ff <cmd>Telescope find_files<CR>
+"nnoremap <leader>ft <cmd>Telescope git_files<CR>
+"nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+"nnoremap <leader>fp <cmd>lua require('telescope.builtin').live_grep{ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] }<cr>
+"nnoremap <leader>fb <cmd>Telescope file_browser<CR>
+"nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
+"nnoremap <leader>fv :lua require'telescope.builtin'.registers{}<CR>
+"nnoremap <leader>fv :lua require'telescope.builtin'.marks{}<CR>
 
-nnoremap <leader>gb :lua require'telescope.builtin'.git_branches{}<CR>
-nnoremap <leader>gs :lua require'telescope.builtin'.git_stash{}<CR>
+"nnoremap <leader>gb :lua require'telescope.builtin'.git_branches{}<CR>
+"nnoremap <leader>gs :lua require'telescope.builtin'.git_stash{}<CR>
 
  
-" Neoterm
+" Terminal
 nnoremap <leader>lc :split term://zsh<CR>
 
 
@@ -205,10 +202,31 @@ nnoremap <F9> :lua require'dap'.step_out()<CR>
 "nnoremap <silent> <M-q> :lua require'dap'.disconnect()<cr>
 
 " Salir de la consola
-tnoremap <Esc> <C-\><C-n>
-    
+ if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif   
 
 " NerdTree
 nnoremap <leader>nn :NERDTreeToggle<CR>
 
+" FZF
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
 
+let g:fzf_action = {
+    \ 'ctrl-q': function('s:build_quickfix_list'),
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-s': 'split',
+    \ 'ctrl-v': 'vsplit'}
+map <C-f> :Files<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :Rg<CR>
+nnoremap <leader>ft :Tags<CR>
+nnoremap <leader>fm :Marks<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fl :Lines<CR>

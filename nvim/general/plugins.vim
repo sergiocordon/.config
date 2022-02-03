@@ -35,7 +35,6 @@ Plug 'airblade/vim-gitgutter'  " Shows git state on the left column
 "Plug 'TimUntersberger/neogit'
 "Plug 'sindrets/diffview.nvim'
 " Lazy git, needs to install lazygit on ubuntu, better with brew
-Plug 'kdheepak/lazygit.nvim'
 
 " Airline (bar on the bottom)
 Plug 'vim-airline/vim-airline' " Bottom bar that shows the state
@@ -48,13 +47,19 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Fuzzy finder -> Telescope
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'BurntSushi/ripgrep'  " To be able to use grep
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-"Plug 'nvim-telescope/telescope-media-files.nvim'
-"Plug 'AckslD/nvim-neoclip.lua'
-Plug 'nvim-telescope/telescope-dap.nvim'
+"Plug 'BurntSushi/ripgrep'  " To be able to use grep
+"Plug 'nvim-lua/popup.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope-fzy-native.nvim'
+""Plug 'nvim-telescope/telescope-media-files.nvim'
+""Plug 'AckslD/nvim-neoclip.lua'
+"Plug 'nvim-telescope/telescope-dap.nvim'
+"
+"FZF
+" https://github.com/junegunn/fzf 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'  " look inside projects
 
 " Nerdtree
 Plug 'scrooloose/nerdtree'
@@ -92,16 +97,13 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'rcarriga/nvim-dap-ui'
 
-" Shemshy -> highligtning
+" Shemshy -> highligtning | it give too many bugs
 " pip3 install pynvim --upgrade 
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 " :UpdateRemotePlugins
 
 " Python sense -> movements
 Plug 'jeetsukumaran/vim-pythonsense'
-
-" Indent lines
-Plug 'nathanaelkane/vim-indent-guides'
 
 " Snippets
 "Plug 'SirVer/ultisnips'

@@ -41,16 +41,9 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 " For filetypes
 set filetype=on
 
-
-" Show whitespaces
-"set list
-set listchars=eol:$,tab:>-,trail:·
-
-
 " Spell -> to change a word z= or with telescope <leader>fs
 "set spell!
 "set spelllang=en
-
 
 " Set line numbers 
 set number
@@ -63,25 +56,21 @@ augroup END
 set signcolumn=auto
 autocmd ColorScheme * highlight! link SignColumn LineNr
 
-
 " Save only read files
 cmap w!! w !sudo tee %
-
 
 " Faster response
 set updatetime=1000
 
-
 "setting colorcolumn color
 highlight ColorColumn ctermbg=7
-
+set colorcolumn=80,120                      " Column of different color
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
 
-
-" Gruvbox
+" ColorScheme
 "colorscheme gruvbox
 colorscheme nord
 set background=dark
@@ -89,7 +78,13 @@ set background=dark
 " Startify
 let g:startify_custom_header = []
 
-" Airline
+
+" Rainbow
+let g:rainbow_active = 1
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
+
+" Airline --------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1  " Show buffers on top
 let g:airline#extensions#branch#enabled = 1
 let g:airline_detect_spell=0
@@ -99,20 +94,10 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" airline symbols
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '☰'
-"let g:airline_symbols.branch = '⎇'
+" symbols
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
-
-"let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
@@ -121,7 +106,7 @@ let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.dirty='⚡'
 
 
-" GitGutter
+" GitGutter ------------------------------------------------------------------
 let g:gitgutter_sign_allow_clobber = 1
 let g:gitgutter_map_keys = 0
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
@@ -135,7 +120,7 @@ let g:gitgutter_sign_removed_above_and_below = '▎'
 let g:gitgutter_sign_modified_removed = '▎'
 
 
-" Coc
+" Coc -------------------------------------------------------------------------
 
 "   TextEdit might fail if hidden is not set.
 set hidden
@@ -158,7 +143,7 @@ set shortmess+=c
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
-" Dap Python
+" Dap Python -----------------------------------------------------------------
 lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 lua require('dap-python').test_runner = 'pytest'
 
@@ -166,7 +151,6 @@ lua << EOF
 vim.fn.sign_define('DapStopped', {text='⦿', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='', linehl='', numhl=''})
 EOF
-
 
 "    Virtual text configuration
 lua require("nvim-dap-virtual-text").setup()
@@ -227,69 +211,6 @@ lua require("nvim-dap-virtual-text").setup()
   "windows = { indent = 1 },
 "})
 "EOF
-
-
-
-" Rainbow
-let g:rainbow_active = 1
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-
-
-
-" Telescope
-"lua << EOF
-"require('telescope').setup{
-  "defaults = {
-    "-- Default configuration for telescope goes here:
-    "-- config_key = value,
-    "mappings = {
-      "i = {
-        "-- map actions.which_key to <C-h> (default: <C-/>)
-        "-- actions.which_key shows the mappings for your picker,
-        "-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        "-- ["<C-h>"] = "which_key"
-      "}
-    "}
-  "},
-  "pickers = {
-    "-- Default configuration for builtin pickers goes here:
-    "-- picker_name = {
-    "--   picker_config_key = value,
-    "--   ...
-    "-- }
-    "-- Now the picker_config_key will be applied every time you call this
-    "-- builtin picker
-  "},
-  "extensions = {
-    "-- Your extension configuration goes here:
-    "-- extension_name = {
-    "--   extension_config_key = value,
-    "-- }
-    "-- please take a look at the readme of the extension you want to configure
-  "}
-"}
-"EOF
-
-
-
-" Indentation
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-let g:indent_guides_enable_on_vim_startup = 1
-
-
-" Telescope
-"lua require('telescope').load_extension('media_files') " media files
-"lua require('telescope').load_extension('neoclip') 
-lua require('telescope').load_extension('dap')
-
-
-" Pydocstring  -> $ which doq
-"let g:pydocstring_doq_path = '~/.local/bin/doq'
-"let g:pydocstring_formatter = 'google'
-"autocmd FileType python setlocal tabstop=4 shiftwidth=4 smarttab expandtab
-"let g:pydocstring_ignore_init = 1
-
 
 
 " NeoGit
@@ -354,3 +275,59 @@ lua require('telescope').load_extension('dap')
   "-- }
 "}
 "EOF
+
+
+" FZF ------------------------------------------------------------------------
+let g:fzf_history_dir = '~/local/share/fzf-history'
+
+let g:fzf_tags_command = 'ctags -R'
+" Border color
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'rounded' } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+"Get Files
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+
+" Get text in files with Rg
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" Ripgrep advanced
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" Git grep
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
