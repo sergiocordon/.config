@@ -10,6 +10,7 @@
 !/nvim/ftplugin/*
 !/alacritty
 !/alacritty/*
+!/qtile
 !/qtile/config.py
 
 /nvim/.netrwhist
