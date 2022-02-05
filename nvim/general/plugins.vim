@@ -17,7 +17,6 @@ Plug 'neoclide/coc-json'
 Plug 'fannheyward/coc-pyright'  " Errores en python
 Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
 Plug 'neoclide/coc-tsserver'
-"Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
 
 " Themes
 Plug 'morhetz/gruvbox'
@@ -32,17 +31,12 @@ Plug 'ryanoasis/vim-devicons'
 " Git    
 "Plug 'tpope/vim-fugitive'  " Windows to git control, call git with :G
 Plug 'airblade/vim-gitgutter'  " Shows git state on the left column
-"Plug 'TimUntersberger/neogit'
-"Plug 'sindrets/diffview.nvim'
-" Lazy git, needs to install lazygit on ubuntu, better with brew
+Plug 'TimUntersberger/neogit'
+Plug 'sindrets/diffview.nvim'
 
 " Airline (bar on the bottom)
 Plug 'vim-airline/vim-airline' " Bottom bar that shows the state
 Plug 'vim-airline/vim-airline-themes'
-
-
-" Investigate ack to search content like grep
-"mileszs/ack.vim
 
 
 " Fuzzy finder -> Telescope
@@ -110,11 +104,10 @@ Plug 'jeetsukumaran/vim-pythonsense'
 "Plug 'honza/vim-snippets'
 
 " Docstring  
+"Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}  " Had to change 'sphinx' -> 'google' after installation (package.json)
 Plug 'pixelneo/vim-python-docstring'
 
 call plug#end()
-
-"source $HOME/.config/nvim/vim-plug/coc.vim
 
 
 " Dap
