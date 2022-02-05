@@ -181,7 +181,6 @@ screens = [
                     linewidth=0,
                     padding=6,
                     ),
-                # widget.CurrentLayout(),
                 widget.GroupBox(
                     active=colors['selection']['text'],
                     inactive=colors['selection']['background'],

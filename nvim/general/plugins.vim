@@ -18,6 +18,9 @@ Plug 'fannheyward/coc-pyright'  " Errores en python
 Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
 Plug 'neoclide/coc-tsserver'
 
+" See registers
+Plug 'junegunn/vim-peekaboo'
+
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
