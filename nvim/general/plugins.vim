@@ -32,7 +32,7 @@ Plug 'szw/vim-maximizer'
 Plug 'ryanoasis/vim-devicons'
 
 " Git    
-"Plug 'tpope/vim-fugitive'  " Windows to git control, call git with :G
+Plug 'tpope/vim-fugitive'  " Windows to git control, call git with :G
 Plug 'airblade/vim-gitgutter'  " Shows git state on the left column
 Plug 'TimUntersberger/neogit'
 Plug 'sindrets/diffview.nvim'
