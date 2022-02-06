@@ -39,6 +39,7 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 "set filetype=on
 autocmd BufRead,BufNewFile *.py source $HOME/.config/nvim/ftplugin/py.vim
 autocmd BufRead,BufNewFile *.csv source $HOME/.config/nvim/ftplugin/csv.vim
+autocmd BufRead,BufNewFile *.js,*.html source $HOME/.config/nvim/ftplugin/web.vim
 
 " Spell -> to change a word z= or with telescope <leader>fs
 "set spell!
