@@ -8,6 +8,7 @@
 " Specify a directory for plugins
 call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-lua/plenary.nvim'  " Needed for most
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Autocomplete pluggins needs
 "   sudo apt install nodejs && sudo apt install npm  
@@ -42,16 +43,6 @@ Plug 'vim-airline/vim-airline' " Bottom bar that shows the state
 Plug 'vim-airline/vim-airline-themes'
 
 
-" Fuzzy finder -> Telescope
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-"Plug 'BurntSushi/ripgrep'  " To be able to use grep
-"Plug 'nvim-lua/popup.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
-"Plug 'nvim-telescope/telescope-fzy-native.nvim'
-""Plug 'nvim-telescope/telescope-media-files.nvim'
-""Plug 'AckslD/nvim-neoclip.lua'
-"Plug 'nvim-telescope/telescope-dap.nvim'
-"
 "FZF
 " https://github.com/junegunn/fzf 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

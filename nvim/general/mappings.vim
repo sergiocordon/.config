@@ -46,6 +46,19 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 
+" Surround
+let g:surround_no_mappings = 1
+nmap ds       <Plug>Dsurround
+nmap cs       <Plug>Csurround
+nmap cS       <Plug>CSurround
+nmap ys       <Plug>Ysurround
+nmap yS       <Plug>YSurround
+nmap yss      <Plug>Yssurround
+nmap ySs      <Plug>YSsurround
+nmap ySS      <Plug>YSsurround
+xmap gs       <Plug>VSurround
+xmap gS       <Plug>VgSurround
+
 " buffer close
 nmap <S-Q> :bd<CR>
 " Move to text buffer
@@ -132,20 +145,6 @@ nnoremap <leader>gl :Neogit log<CR>
 nnoremap <leader>gp :Neogit push<CR>
 
 
-" Telescope
-"nnoremap <leader>ff <cmd>Telescope find_files<CR>
-"nnoremap <leader>ft <cmd>Telescope git_files<CR>
-"nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-"nnoremap <leader>fp <cmd>lua require('telescope.builtin').live_grep{ cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1] }<cr>
-"nnoremap <leader>fb <cmd>Telescope file_browser<CR>
-"nnoremap <leader>fs :lua require'telescope.builtin'.spell_suggest{}<CR>
-"nnoremap <leader>fv :lua require'telescope.builtin'.registers{}<CR>
-"nnoremap <leader>fv :lua require'telescope.builtin'.marks{}<CR>
-
-"nnoremap <leader>gb :lua require'telescope.builtin'.git_branches{}<CR>
-"nnoremap <leader>gs :lua require'telescope.builtin'.git_stash{}<CR>
-
- 
 " Terminal
 nnoremap <leader>lc :split term://zsh<CR>
 
@@ -221,6 +220,7 @@ let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-s': 'split',
     \ 'ctrl-v': 'vsplit'}
+nnoremap gi :Rg <c-r>=expand("<cword>")<cr> <CR>
 map <C-f> :Files<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :Rg<CR>
