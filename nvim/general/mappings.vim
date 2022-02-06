@@ -81,44 +81,6 @@ nnoremap <Leader>O O<Esc>
 nnoremap <Leader>m :MaximizerToggle!<CR>
 
 
-" Coc
-"    GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gr <Plug>(coc-references)
-
-"    Use <C-space> to trigger completion.
-inoremap <silent><expr> <C-space> coc#refresh()
-
-"    Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-"    Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-"    Move with tab 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
 " Pydocstring
 nmap <silent> ga :Docstring
 
@@ -154,60 +116,18 @@ nmap <C-q> <Plug>NERDCommenterToggle
 vmap <C-q> <Plug>NERDCommenterToggle<CR>gv
 
 
-" Dap
-nnoremap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <leader>dcb :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
-nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
-nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
-nnoremap <F12> :lua require'dap'.close()<CR>
-nnoremap <leader>dc :lua require'dap'.close()<CR>
-nnoremap <leader>dt :lua require('dap-python').test_method()<CR>
-nnoremap <leader>df :lua require('dap-python').test_class()<CR>
-nnoremap <leader>dr :lua require'dap'.repl.toggle()<CR>
-nnoremap <F4> :lua require'dap'.up()<CR>
-nnoremap <F3> :lua require'dap'.down()<CR>
-nnoremap <F8> :lua require'dap'.step_over()<cr>
-nnoremap <F7> :lua require'dap'.step_into()<CR>
-nnoremap <F9> :lua require'dap'.step_out()<CR>
-"vnoremap <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
-"nnoremap <silent> <leader>ds :lua local w = require('dap-python').widgets; w.centered_float(w.scopes)<CR>
-
-"nnoremap <leader>df :lua require('dapui').close()<CR>
-"nnoremap <leader>df :lua require('dapui').toggle()<CR>
-"nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
-"vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
-"vnoremap <leader>dz <Cmd>lua require("dapui").eval()<CR>
-" Variables/Scopes
-"nnoremap <leader>dv :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
-"nnoremap <silent> <leader>di :lua require'dap.ui.variables'.hover(function () return vim .fn.expand("<cexpr>") end)<CR>
-"vnoremap <silent> <leader>di :lua require'dap.ui.variables'.visual_hover()<CR>
-
-" Rcarriga mappings
-"nnoremap <silent> <M-c> :lua require'dap'.continue()<CR>
-"nnoremap <silent> <M-right> :lua require'dap'.step_over()<CR>
-"nnoremap <silent> <M-down> :lua require'dap'.step_into()<CR>
-"nnoremap <silent> <M-up> :lua require'dap'.step_out()<CR>
-"nnoremap <silent> <M-x> :lua require'dap'.toggle_breakpoint()<CR>
-"nnoremap <silent> <M-t> :lua require('dapui').toggle()<CR>
-"vnoremap <silent> <M-c> <ESC>:lua require('dap-python').debug_selection()<CR>
-"nnoremap <silent> <M-l> :lua require"osv".launch()<CR>
-"nnoremap <silent> <M-k> :lua require'dapui'.eval()<cr>
-"vnoremap <M-k> <Cmd>lua require'dapui'.eval()<cr>
-"nnoremap <silent> <M-m> :lua require'dapui'.float_element()<cr>
-"nnoremap <silent> <M-v> :lua require'dapui'.float_element("scopes")<cr>
-"nnoremap <silent> <M-r> :lua require'dapui'.float_element("repl")<cr>
-"nnoremap <silent> <M-q> :lua require'dap'.disconnect()<cr>
-
 " Salir de la consola
  if has("nvim")
   au TermOpen * tnoremap <Esc> <c-\><c-n>
   au FileType fzf tunmap <Esc>
 endif   
 
+
 " NerdTree
 nnoremap <leader>nn :NERDTreeToggle<CR>
 
-" FZF
+
+" FZF ------------------------------------------------------------------------
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -228,3 +148,41 @@ nnoremap <leader>ft :Tags<CR>
 nnoremap <leader>fm :Marks<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :Lines<CR>
+
+
+" Coc ------------------------------------------------------------------------
+"    GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gr <Plug>(coc-references)
+
+"    Use <C-space> to trigger completion.
+inoremap <silent><expr> <C-space> coc#refresh()
+
+"    Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+"    Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+"    Move with tab 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
