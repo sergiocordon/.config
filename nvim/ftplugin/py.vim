@@ -16,13 +16,19 @@ set colorcolumn=80,120                      " Column of different color
 lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 lua require('dap-python').test_runner = 'pytest'
 
+au FileType dap-repl lua require('dap.ext.autocompl').attach()
+
 lua << EOF
-vim.fn.sign_define('DapStopped', {text='⦿', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⦿', texthl='Success', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='Error', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition' , {text='☐', texthl='', linehl='', numhl=''})
+-- Focus on REPL
+-- local dap = require('dap')
+-- dap.defaults.fallback.focus_repl = true
 EOF
 
 "    Virtual text configuration
-lua require("nvim-dap-virtual-text").setup()
+"lua require("nvim-dap-virtual-text").setup()
 "lua <<EOF
 "require("nvim-dap-virtual-text").setup {
     "enabled = true,                     -- enable this plugin (the default)
@@ -42,7 +48,9 @@ lua require("nvim-dap-virtual-text").setup()
 
 
 "    DapUi configuration
-"lua <<EOF require("dapui").setup({
+lua require("dapui").setup()
+"lua <<EOF 
+"require("dapui").setup({
   "icons = { expanded = "▾", collapsed = "▸" },
   "mappings = {
     "-- Use a table to apply multiple mappings
@@ -56,7 +64,10 @@ lua require("nvim-dap-virtual-text").setup()
     "-- You can change the order of elements in the sidebar
     "elements = {
       "-- Provide as ID strings or tables with "id" and "size" keys
-      "{ id = "scopes", size = 0.25},
+      "{
+        "id = "scopes",
+        "size = 0.25, -- Can be float or integer > 1
+      "},
       "{ id = "breakpoints", size = 0.25 },
       "{ id = "stacks", size = 0.25 },
       "{ id = "watches", size = 00.25 },
@@ -66,8 +77,8 @@ lua require("nvim-dap-virtual-text").setup()
   "},
   "tray = {
     "elements = { "repl" },
-    "size = 0,
-    "position = "right", -- Can be "left", "right", "top", "bottom"
+    "size = 10,
+    "position = "bottom", -- Can be "left", "right", "top", "bottom"
   "},
   "floating = {
     "max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -83,28 +94,29 @@ lua require("nvim-dap-virtual-text").setup()
 
 
 " Dap ------------------------------------------------------------------------
+"  Only DAP
+"nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
+"nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
+nnoremap <leader>dq :lua require'dap'.terminate()<CR> :lua require'dap'.close()<CR>
 nnoremap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <leader>dcb :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
-nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
-nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
-nnoremap <F12> :lua require'dap'.close()<CR>
-nnoremap <leader>dc :lua require'dap'.close()<CR>
-nnoremap <leader>dt :lua require('dap-python').test_method()<CR>
-nnoremap <leader>df :lua require('dap-python').test_class()<CR>
-nnoremap <leader>dr :lua require'dap'.repl.toggle()<CR>
-nnoremap <F4> :lua require'dap'.up()<CR>
-nnoremap <F3> :lua require'dap'.down()<CR>
-nnoremap <F8> :lua require'dap'.step_over()<cr>
-nnoremap <F7> :lua require'dap'.step_into()<CR>
-nnoremap <F9> :lua require'dap'.step_out()<CR>
-"vnoremap <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
-"nnoremap <silent> <leader>ds :lua local w = require('dap-python').widgets; w.centered_float(w.scopes)<CR>
+"nnoremap <leader>dcb :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+"nnoremap <leader>dr :lua require'dap'.repl.toggle()<CR>
+"nnoremap <silent> <leader>ds :lua require('dap.ui.widgets').hover()<CR>
+"nnoremap <F3> :lua require'dap'.down()<CR>
+"nnoremap <F4> :lua require'dap'.up()<CR>
+"nnoremap <F6> :lua require'dap'.pause()<CR>
+"nnoremap <F8> :lua require'dap'.step_over()<cr>
+"nnoremap <F7> :lua require'dap'.step_into()<CR>
+"nnoremap <F9> :lua require'dap'.step_out()<CR>
 
-"nnoremap <leader>df :lua require('dapui').close()<CR>
-"nnoremap <leader>df :lua require('dapui').toggle()<CR>
-"nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
-"vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
-"vnoremap <leader>dz <Cmd>lua require("dapui").eval()<CR>
+nnoremap <leader>dt :lua require('dapui').toggle()<CR>
+nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
+nnoremap <leader>dq :lua require('dapui').close()<CR>
+nnoremap <leader>ds :lua require'dap.ui.widgets'.hover()<CR>
+vnoremap <leader>ds :lua require'dap.ui.widgets'.visual_hover()<CR>
+nnoremap <silent>de :lua require'dapui'.eval()<cr>
+vnoremap <leader>de <Cmd>lua require("dapui").eval()<CR>
+nnoremap <silent>dm :lua require'dapui'.float_element("repl")<cr>
 " Variables/Scopes
 "nnoremap <leader>dv :lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
 "nnoremap <silent> <leader>di :lua require'dap.ui.variables'.hover(function () return vim .fn.expand("<cexpr>") end)<CR>
