@@ -19,8 +19,8 @@ lua require('dap-python').test_runner = 'pytest'
 au FileType dap-repl lua require('dap.ext.autocompl').attach()
 
 lua << EOF
-vim.fn.sign_define('DapStopped', {text='⦿', texthl='Success', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='Error', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⦿', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpointCondition' , {text='☐', texthl='', linehl='', numhl=''})
 -- Focus on REPL
 -- local dap = require('dap')
@@ -97,7 +97,7 @@ lua require("dapui").setup()
 "  Only DAP
 "nnoremap <leader>dd :w<CR> <bar> :lua require('dap').continue()<CR>
 "nnoremap <leader>dl :w<CR> <bar> :lua require'dap'.run_last()<CR>
-nnoremap <leader>dq :lua require'dap'.terminate()<CR> :lua require'dap'.close()<CR>
+nnoremap <leader>dq :lua require'dap'.disconnect()<CR> :lua require'dap'.close()<CR>
 nnoremap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 "nnoremap <leader>dcb :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 "nnoremap <leader>dr :lua require'dap'.repl.toggle()<CR>
