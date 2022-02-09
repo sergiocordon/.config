@@ -231,6 +231,24 @@ mx: pone una marca en x (recomendado usar las teclas que caigan debajo de los de
  | si X (mayus) entonces es una ref global, en otro caso sera local al archivo
 'x: vuelve a la mark x
 ```
+# INSTALLATION
+## FONT
+[FURA](https://drive.google.com/file/d/13r0Pa--w40Rn74wy3ZlJbQb_UKOOsvXv/view?usp=sharing)
+## PLUGGINS
+### Install Node js and npm
+
+```
+:PlugClean
+:PlugInstall
+
+:TSUpdate
+```
+### FZF
+Hay que instalar varias cosas -> [LINK]( https://github.com/junegunn/fzf )
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
 
 ## PLUGGINS
 
