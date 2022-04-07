@@ -16,8 +16,6 @@ set colorcolumn=80,120                      " Column of different color
 lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 lua require('dap-python').test_runner = 'pytest'
 
-au FileType dap-repl lua require('dap.ext.autocompl').attach()
-
 lua << EOF
 vim.fn.sign_define('DapStopped', {text='⦿', texthl='', linehl='', numhl=''})
 vim.fn.sign_define('DapBreakpoint', {text='〇', texthl='', linehl='', numhl=''})

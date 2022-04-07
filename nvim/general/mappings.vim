@@ -13,14 +13,14 @@ let g:mapleader = "\<Space>"
 "nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Autoclose brackets
-inoremap "<TAB> ""<left>
-inoremap <<TAB> <><left>
-inoremap '<TAB> ''<left>
-inoremap (<TAB> ()<left>
-inoremap [<TAB> []<left>
-inoremap {<TAB> {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+"inoremap "<TAB> ""<left>
+"inoremap <<TAB> <><left>
+"inoremap '<TAB> ''<left>
+"inoremap (<TAB> ()<left>
+"inoremap [<TAB> []<left>
+"inoremap {<TAB> {}<left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O
 
 
 " Use alt + arrows to resize windows

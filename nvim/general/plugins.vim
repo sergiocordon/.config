@@ -12,12 +12,14 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 
 " Autocomplete pluggins needs
 "   sudo apt install nodejs && sudo apt install npm  
+Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main'}
+
 Plug 'neoclide/coc-tsserver'
 Plug 'neoclide/coc-json'
 Plug 'fannheyward/coc-pyright'  " Errores en python
 Plug 'iamcco/coc-vimlsp'  " Completado de funciones y documentacion flotante
+"Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main'}
 
 " See registers
 Plug 'junegunn/vim-peekaboo'
@@ -138,3 +140,4 @@ call plug#end()
 "
 " A veces tras algun cambio no se actualiza bien los colores en git:
 " :diffupdate
+"
