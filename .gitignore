@@ -6,8 +6,6 @@
 
 !/nvim
 !/nvim/*
-!/nvim/general/*
-!/nvim/ftplugin/*
 !/alacritty
 !/alacritty/*
 !/qtile
