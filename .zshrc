@@ -133,3 +133,7 @@ bindkey -v
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
