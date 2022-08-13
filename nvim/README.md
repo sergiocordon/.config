@@ -29,6 +29,10 @@ When appears ${n: name} means that has supertab. The tab can be used to jump bet
 As in autocomplete it useful <c-e> and <c-y>
 There is a lot of possible sources of completion (see docs)
 
+### LAZY GIT
+You have to install it on the system previously.
+Easy to install from source using rust.
+
 ### VIM dap
 #### For python
 1- Install debugpy
