@@ -35,7 +35,6 @@ Easy to install from source using GO.
 Also needs delta:
   https://github.com/dandavison/delta
 
-
 ### VIM dap
 #### For python
 1- Install debugpy
