@@ -11,5 +11,7 @@
 !/alacritty/*
 !/qtile
 !/qtile/config.py
+!/lazygit
+!/lazygit/*
 
 /nvim/plugin
