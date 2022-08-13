@@ -4,7 +4,11 @@
 !README.md
 !.zshrc
 
+!/nvim
+!/nvim/*
 !/alacritty
 !/alacritty/*
 !/qtile
 !/qtile/config.py
+
+/nvim/plugin
