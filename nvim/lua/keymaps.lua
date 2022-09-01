@@ -32,7 +32,7 @@ keymap('i', '<C-k>', '<Esc>:m .-2<CR>==gi', opts)
 keymap('v', '<C-j>', ":m '>+1<CR>gv=gv", opts)  
 keymap('v', '<C-k>', ":m '<-2<CR>gv=gv", opts)  
 
--- Buffers
+-- Buffers:
 keymap('n', '<TAB>', ':bnext<CR>', opts)  
 keymap('n', '<S-TAB>', ':bprevious<CR>', opts)  
 
@@ -43,11 +43,15 @@ keymap('v', '>', '>gv', opts)
 -- CMP
 keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+-- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
 -- Move in autocomplete
--- keymap('i', '<expr> <Esc>', 'pumvisible() ? "\\<C-e>" : "\\<Esc>"', {noremap=true, expr = true})
+-- vim.cmd('inoremap pumvisible() ? "\\<c-e>" : "\\<esc>"')
+-- vim.cmd('inoremap pumvisible() ? "\\<c-y>" : "\\<CR>"')
+-- vim.cmd('inoremap pumvisible() ? "\\<c-n>" : "\\<c-j>"')
+-- vim.cmd('inoremap pumvisible() ? "\\<c-p>" : "\\<c-k>"')
+-- keymap('i', '<expr> <Esc>', 'pumvisible() ? "\\<c-e>" : "\\<esc>"', {noremap=true, expr = true})
 -- keymap('i', '<expr> <CR>', 'pumvisible() ? "\\<C-y>" : "\\<CR>"', {noremap=true, expr = true})
 -- keymap('i', '<expr> <C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', {noremap=true, expr = true})
 -- keymap('i', '<expr> <C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', {noremap=true, expr = true})
@@ -64,6 +68,4 @@ keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 -- nmap ySS      <Plug>YSsurround
 -- xmap gs       <Plug>VSurround
 -- xmap gS       <Plug>VgSurround
-
--- DAP
 

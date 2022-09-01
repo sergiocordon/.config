@@ -1,3 +1,12 @@
+-----------------------------------------------------------
+-- Neovim API aliases
+-----------------------------------------------------------
+--local map = vim.api.nvim_set_keymap -- set global keymap
+local cmd = vim.cmd                   -- execute Vim commands
+local exec = vim.api.nvim_exec        -- execute Vimscript
+local fn = vim.fn                     -- call Vim functions
+local g = vim.g                       -- global variables
+local opt = vim.opt                   -- global/buffer/windows-scoped options
 
 -- Options ----------------------------------------------------------------------------------
 --    ? -> i dont know what does
@@ -41,3 +50,5 @@ vim.o.updatetime = 300                  -- Length of time to wait before trigger
 vim.o.wrap = false                      -- Disable wrapping of lines longer than the width of window
 vim.o.writebackup = false               -- Disable making a backup before overwriting a file
 
+-- don't auto commenting new lines
+cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]

@@ -32,8 +32,6 @@ There is a lot of possible sources of completion (see docs)
 ### LAZY GIT
 You have to install it on the system previously.
 Easy to install from source using GO.
-Also needs delta:
-  https://github.com/dandavison/delta
 
 ### VIM dap
 #### For python

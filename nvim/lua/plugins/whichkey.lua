@@ -89,9 +89,29 @@ local mappings = {
   -- ["e"] = { "<cmd>NeoTree Toggle<cr>", "Explorer" },
   w = { "<cmd>w!<CR>", "Save" },
   q = { "<cmd>q!<CR>", "Quit" },
-  c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  d = { "<cmd>bd!<CR>", "Delete Buffer" }, -- Closes the window
+  -- c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  c = { "<cmd>bd!<CR>", "Delete Buffer" }, -- Closes the window
   -- h = { "<cmd>nohlsearch<CR>", "No Highlight" },
+  d = {
+    name = "Debug",
+    d = { ":w<CR> <bar> :lua require'dap'.continue()<CR>", "Init" },
+    l = { ":w<CR> <bar> :lua require'dap'.run_last()<CR>", "Run last" },
+    q = { ":bd! dap-repl<CR> <bar> :lua require('dapui').close()<CR> <bar> :lua require'dap'.disconnect()<CR> <bar> :lua require'dap'.close()<CR>", "Quit" },
+    b = { ":lua require'dap'.toggle_breakpoint()<CR>", "Toggle breakpoint" },
+    B = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Toggle conditional breakpoint" },
+    r = { ":lua require'dap'.repl.toggle()<CR>", "Toggle REPL" },
+    j = { ":lua require'dap'.down()<CR>", "Down" },
+    k = { ":lua require'dap'.up()<CR>", "Up" },
+    o = { ":lua require'dap'.step_over()<CR>", "Step over" },
+    i = { ":lua require'dap'.step_into()<CR>", "Step into" },
+    O = { ":lua require'dap'.step_out()<CR>", "Step out" },
+
+    a = { ":lua vim.diagnostic.open_float({ border = 'rounded' })<CR>", "Diagnostic"},
+    Q = { ":lua vim.diagnostic.setloclist()<CR>", "Error list" },
+    U = { ":lua require('dapui').toggle()<CR>", "Toggle UI" },
+    e = { ":lua require'dapui'.eval()<CR> ", "Eval" },
+    s = { "<ESC>:lua require('dap-python').debug_selection()<CR>", "Debug selection" },
+  },
 
   f = {
     name = "Find",
