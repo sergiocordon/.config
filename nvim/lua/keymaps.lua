@@ -40,11 +40,6 @@ keymap('n', '<S-TAB>', ':bprevious<CR>', opts)
 keymap('v', '<', '<gv', opts)  
 keymap('v', '>', '>gv', opts)  
 
--- CMP
-keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
--- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
 -- Move in autocomplete
 -- vim.cmd('inoremap pumvisible() ? "\\<c-e>" : "\\<esc>"')

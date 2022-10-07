@@ -23,7 +23,7 @@ vim.cmd('filetype plugin indent on')
 vim.o.completeopt = "menuone,noselect"  -- Options for insert mode completion
 vim.o.fillchars = "eob: "               -- Disable `~` on nonexistent lines
 vim.o.copyindent = true                 -- Copy the previous indentation on autoindenting
-vim.o.cursorline = true                 --? Highlight the text line of the cursor
+vim.o.cursorline = false                -- Highlight the text line of the cursor
 vim.o.fileencoding = "utf-8"            -- File content encoding for the buffer
 vim.o.history = 100                     -- Number of commands to remember in a history table
 vim.o.ignorecase = true                 -- Case insensitive searching
@@ -44,11 +44,12 @@ vim.o.splitbelow = true                 -- Splitting a new window below the curr
 vim.o.splitright = true                 -- Splitting a new window at the right of the current one
 vim.o.swapfile = false                  -- Disable use of swapfile for the buffer
 vim.o.termguicolors = true              -- Enable 24-bit RGB color in the TUI
-vim.o.timeoutlen = 300                  -- Length of time to wait for a mapped sequence
+vim.o.timeoutlen = 500                  -- Length of time to wait for a mapped sequence
 vim.o.undofile = true                   -- Enable persistent undo
-vim.o.updatetime = 300                  -- Length of time to wait before triggering the plugin
+vim.o.updatetime = 500                  -- Length of time to wait before triggering the plugin
 vim.o.wrap = false                      -- Disable wrapping of lines longer than the width of window
 vim.o.writebackup = false               -- Disable making a backup before overwriting a file
+vim.o.ch = 0                            -- Space for the command line at the bottom
 
 -- don't auto commenting new lines
 cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
