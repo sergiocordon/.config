@@ -40,6 +40,10 @@ keymap('n', '<S-TAB>', ':bprevious<CR>', opts)
 keymap('v', '<', '<gv', opts)  
 keymap('v', '>', '>gv', opts)  
 
+keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)  
+keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)  
+keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)  
+
 
 -- Move in autocomplete
 -- vim.cmd('inoremap pumvisible() ? "\\<c-e>" : "\\<esc>"')
@@ -50,17 +54,4 @@ keymap('v', '>', '>gv', opts)
 -- keymap('i', '<expr> <CR>', 'pumvisible() ? "\\<C-y>" : "\\<CR>"', {noremap=true, expr = true})
 -- keymap('i', '<expr> <C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', {noremap=true, expr = true})
 -- keymap('i', '<expr> <C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', {noremap=true, expr = true})
-
--- Surround
--- let g:surround_no_mappings = 1
--- nmap ds       <Plug>Dsurround
--- nmap cs       <Plug>Csurround
--- nmap cS       <Plug>CSurround
--- nmap ys       <Plug>Ysurround
--- nmap yS       <Plug>YSurround
--- nmap yss      <Plug>Yssurround
--- nmap ySs      <Plug>YSsurround
--- nmap ySS      <Plug>YSsurround
--- xmap gs       <Plug>VSurround
--- xmap gS       <Plug>VgSurround
 
