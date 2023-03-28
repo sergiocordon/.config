@@ -1,0 +1,315 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+         "key": "ctrl+7",
+         "command": "editor.action.commentLine",
+         "when": "editorTextFocus && !editorReadonly"
+    },
+    // Lo siguiente da problemas con vim ya que no se seleccionan varias lineas si no es con el rator
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    {
+        "key": "f1",
+        "command": "editor.debug.action.selectionToRepl"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "editor.action.peekDefinition"
+    },
+    {
+        "key": "shift+f12",
+        "command": "-editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+//    {
+//        "key": "ctrl+j",
+//        "command": "-extension.vim_ctrl+j",
+//        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+//    },
+
+    // NAVIGATION
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-notebook.centerActiveCell",
+        "when": "notebookEditorFocused"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    
+    // EXPLORER
+    {
+        "key": "alt+e",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "alt+e",
+        "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "alt+e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "explorerViewletVisible"
+    },
+    {
+        "key": "alt+e",
+        "command": "-workbench.action.toggleSidebarVisibility",
+        "when": "explorerViewletVisible"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "listFocus && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "enter",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "tab",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "l",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "o",
+        "command": "list.toggleExpand",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "h",
+        "command": "list.collapse",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+
+
+
+    {
+        "key": "shift+;",
+        "command": "insertPrevSuggestion",
+        "when": "hasOtherSuggestions && textInputFocus && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "tab",
+        "command": "-acceptAlternativeSelectedSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus && textInputFocus"
+    },
+
+    // RESIZE PANELS
+    {
+        "key": "ctrl+shift+Left",
+        "command": "workbench.action.terminal.resizePaneLeft"
+    },
+    {
+        "key": "ctrl+shift+Down",
+        "command": "workbench.action.terminal.resizePaneDown"
+    },
+    {
+        "key": "ctrl+shift+Up",
+        "command": "workbench.action.terminal.resizePaneUp"
+    },
+    {
+        "key": "ctrl+shift+Right",
+        "command": "workbench.action.terminal.resizePaneRight"
+    },
+    {
+        "key": "ctrl+shift+Up",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+shift+Down",
+        "command": "workbench.action.decreaseViewSize"
+    },
+
+
+
+    {
+        "key": "alt+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+//    {
+//        "key": "ctrl+g",
+//        "command": "-extension.vim_ctrl+g",
+//        "when": "editorTextFocus && vim.active && vim.use<C-g> && !inDebugRepl"
+//    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "-workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "alt+d",
+        "command": "extension.multiCommand.execute",
+        "args":
+        {
+            "sequence":
+                [ 
+                    "workbench.debug.action.toggleRepl",
+                    "workbench.view.debug"
+                ]
+        },
+        "when": "workbench.panel.repl.view.active"
+    },
+    {
+        "key": "alt+c",
+        "command": "workbench.panel.repl.view.focus"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+,",
+        "command": "editor.action.outdentLines"
+    },
+    {
+        "key": "alt+.",
+        "command": "editor.action.indentLines"
+    },
+    {
+        "key": "tab",
+        "command": "acceptSelectedSuggestion",
+        "when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-acceptSelectedSuggestion",
+        "when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+    },
+    {
+        "key": "space",
+        "command": "whichkey.show",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "key": "z a",
+        "command": "editor.toggleFold",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "z M",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "z R",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "z shift+M",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "z shift+R",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-markdown.showPreview",
+        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+    },
+]
