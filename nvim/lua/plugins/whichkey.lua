@@ -87,7 +87,7 @@ local mappings = {
       "Buffers",
     },
     w = { "<cmd>w!<CR>", "Save" },
-    q = { "<cmd>q!<CR>", "Quit" },
+    -- q = { "<cmd>q!<CR>", "Quit" },
     c = { "<cmd>bd!<CR>", "Delete Buffer" }, -- Closes the window
     -- h = { "<cmd>nohlsearch<CR>", "No Highlight" },
     d = {
@@ -110,6 +110,8 @@ local mappings = {
       e = { ":lua require'dapui'.eval()<CR> ", "Eval" },
       s = { "<ESC>:lua require('dap-python').debug_selection()<CR>", "Debug selection" },
     },
+
+    e = { "<cmd> Telescope file_browser<CR>", "File Browser" },
 
     f = {
       name = "Find",

@@ -39,6 +39,12 @@ keymap('n', '<S-TAB>', ':bprevious<CR>', opts)
 -- Better indentation
 keymap('v', '<', '<gv', opts)  
 keymap('v', '>', '>gv', opts)  
+keymap('n', '<M-,>', '<', opts)  
+keymap('n', '<M-.>', '>', opts)  
+keymap('i', '<M-,>', '<', opts)  
+keymap('i', '<M-.>', '>', opts)  
+keymap('v', '<M-,>', '<gv', opts)  
+keymap('v', '<M-.>', '>gv', opts)  
 
 keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)  
 keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)  

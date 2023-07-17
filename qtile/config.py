@@ -6,6 +6,7 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = guess_terminal()
+browser = "google-chrome"
 
 colors = {
   "primary": {
@@ -85,6 +86,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key([mod], "e", lazy.spawn(browser)),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -149,11 +151,12 @@ def init_layout_theme():
 layout_theme = init_layout_theme() 
 
 layouts = [
-    layout.MonadTall(**layout_theme),
+    # layout.MonadTall(**layout_theme),
+    layout.Columns(**layout_theme),
+    # layout.Bsp(),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),

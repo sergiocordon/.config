@@ -3,7 +3,10 @@ if not status_ok then
   return
 end
 
+require('telescope').load_extension "file_browser"
+
 local actions = require "telescope.actions"
+local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
@@ -59,7 +62,11 @@ telescope.setup {
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
         ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.complete_tag,
-        ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+        ["<C-_>"] = actions.which_key, 
+        ["<C-?>"] = actions.which_key,
+
+        ["<M-r>"] = fb_actions.rename,
+        ["<M-a>"] = fb_actions.create,
       },
 
       n = {
@@ -92,6 +99,9 @@ telescope.setup {
         ["<PageDown>"] = actions.results_scrolling_down,
 
         ["?"] = actions.which_key,
+
+        ["<M-r>"] = fb_actions.rename,
+        ["<M-a>"] = fb_actions.create,
       },
     },
   },
