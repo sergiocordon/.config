@@ -3,7 +3,7 @@
 local opts = {noremap = true, silent = true}
 
 -- Remaps ---------------------------------------------------------------
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.api.nvim_set_keymap  -- esto ya no se hace asi, ahora es vim.keymap.set()
 
 vim.g.mapleader = " "
 
