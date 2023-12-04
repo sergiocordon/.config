@@ -31,19 +31,20 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
   {
-  -- Git related plugins
+    -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
-
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
-
     -- Vim surround
     'tpope/vim-surround',
-
+    --Vim sneak
+    'justinmk/vim-sneak',
+    'tpope/vim-commentary',
     -- NOTE: This is where your plugins related to LSP can be installed.
     --  The configuration is done below. Search for lspconfig to find it below.
-    { -- LSP Configuration & Plugins
+    {
+      -- LSP Configuration & Plugins
       'neovim/nvim-lspconfig',
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
@@ -58,16 +59,15 @@ require('lazy').setup({
         'folke/neodev.nvim',
       },
     },
-
-    { -- Autocompletion
+    {
+      -- Autocompletion
       'hrsh7th/nvim-cmp',
       dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     },
-
     -- Useful plugin to show you pending keybinds.
-    { 'folke/which-key.nvim', opts = {} },
-
-    { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    { 'folke/which-key.nvim',          opts = {} },
+    {
+      -- Adds git releated signs to the gutter, as well as utilities for managing changes
       'lewis6991/gitsigns.nvim',
       opts = {
         -- See `:help gitsigns.txt`
@@ -80,16 +80,16 @@ require('lazy').setup({
         },
       },
     },
-
-    { -- Theme 
+    {
+      -- Theme
       'shaunsingh/nord.nvim',
       priority = 1000,
       config = function()
         vim.cmd.colorscheme 'nord'
       end,
     },
-
-    { -- Set lualine as statusline
+    {
+      -- Set lualine as statusline
       'nvim-lualine/lualine.nvim',
       -- See `:help lualine.txt`
       opts = {
@@ -101,8 +101,8 @@ require('lazy').setup({
         },
       },
     },
-
-    { -- Add indentation guides even on blank lines
+    {
+      -- Add indentation guides even on blank lines
       'lukas-reineke/indent-blankline.nvim',
       -- Enable `lukas-reineke/indent-blankline.nvim`
       -- See `:help indent_blankline.txt`
@@ -111,13 +111,10 @@ require('lazy').setup({
         show_trailing_blankline_indent = false,
       },
     },
-
     -- "gc" to comment visual regions/lines
-    { 'numToStr/Comment.nvim', opts = {} },
-
+    -- { 'numToStr/Comment.nvim',         opts = {} },
     -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
-
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
     -- Only load if `make` is available. Make sure you have the system
     -- requirements installed.
@@ -130,16 +127,15 @@ require('lazy').setup({
         return vim.fn.executable 'make' == 1
       end,
     },
-
     require 'kickstart.plugins.debug',
     require 'kickstart.plugins.autoformat',
-
     cond = not vim.g.vscode,
   },
 
   -- Loaded with vscode or nvim
   {
-    { -- Highlight, edit, and navigate code
+    {
+      -- Highlight, edit, and navigate code
       'nvim-treesitter/nvim-treesitter',
       dependencies = {
         'nvim-treesitter/nvim-treesitter-textobjects',
@@ -206,8 +202,8 @@ vim.o.termguicolors = true
 -- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Keymap for better indentation
-vim.keymap.set('v', '<', '<gv', {noremap = true, silent = true})
-vim.keymap.set('v', '>', '>gv', {noremap = true, silent = true})
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 
 
 
@@ -216,32 +212,34 @@ vim.keymap.set('v', '>', '>gv', {noremap = true, silent = true})
 
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
-vim.o.expandtab = true  -- Changes tabs for spaces
+vim.o.expandtab = true -- Changes tabs for spaces
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
 vim.o.undofile = true
-vim.o.ch = 0  -- space for command line at the end 
+vim.o.ch = 0 -- space for command line at the end
 
 
 
 if vim.g.vscode then
   -- Movement over folds
   local function moveCursor(direction)
-      if (vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '') then
-            return ('g' .. direction)
-      else
-          return direction
-      end
+    if (vim.fn.reg_recording() == '' and vim.fn.reg_executing() == '') then
+      return ('g' .. direction)
+    else
+      return direction
+    end
   end
 
   vim.keymap.set('n', 'k', function()
-      return moveCursor('k')
+    return moveCursor('k')
   end, { expr = true, remap = true })
   vim.keymap.set('n', 'j', function()
-      return moveCursor('j')
+    return moveCursor('j')
   end, { expr = true, remap = true })
 
+  vim.keymap.nvim_set_keymap('v', '<C-C>', '"+y', { noremap = true, silent = true })
+  vim.keymap.nvim_set_keymap('n', '<C-C>', 'V"+y', { noremap = true, silent = true })
 else
   -- [[ Highlight on yank ]]
   -- See `:help vim.highlight.on_yank()`
@@ -430,71 +428,70 @@ else
       { name = 'luasnip' },
     },
   }
-end
 
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  -- [[ Configure Treesitter ]]
+  -- See `:help nvim-treesitter`
+  require('nvim-treesitter.configs').setup {
+    -- Add languages to be installed here that you want installed for treesitter
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
 
-  -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+    -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+    auto_install = false,
 
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
-  textobjects = {
-    select = {
+    highlight = { enable = true },
+    indent = { enable = true, disable = { 'python' } },
+    incremental_selection = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = '<c-s>',
+        node_decremental = '<M-space>',
       },
     },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        keymaps = {
+          -- You can use the capture groups defined in textobjects.scm
+          ['aa'] = '@parameter.outer',
+          ['ia'] = '@parameter.inner',
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['ac'] = '@class.outer',
+          ['ic'] = '@class.inner',
+        },
       },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          [']m'] = '@function.outer',
+          [']]'] = '@class.outer',
+        },
+        goto_next_end = {
+          [']M'] = '@function.outer',
+          [']['] = '@class.outer',
+        },
+        goto_previous_start = {
+          ['[m'] = '@function.outer',
+          ['[['] = '@class.outer',
+        },
+        goto_previous_end = {
+          ['[M'] = '@function.outer',
+          ['[]'] = '@class.outer',
+        },
       },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<leader>a'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<leader>A'] = '@parameter.inner',
+        },
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
-}
-
+  }
+end
