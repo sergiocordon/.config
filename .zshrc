@@ -71,19 +71,19 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    copydir
-    dirhistory
-    git 
-    git-extras 
-    git-auto-fetch
-    git-prompt
-    extract 
-    zsh-autosuggestions 
-    #k 
-    zsh-syntax-highlighting
-    autojump
-    vi-mode
-    ) 
+	aws
+	dirhistory
+	docker
+	docker-compose
+	git
+	git-extras
+	git-auto-fetch
+	git-prompt
+	extract
+	autojump
+	vi-mode
+) 
+
 
 # correct indicator for vim mode on console
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
