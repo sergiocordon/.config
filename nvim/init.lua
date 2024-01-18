@@ -17,10 +17,31 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- PLUGIN INSTALLATION -----------------------------------------
--- if vim.g.vscode then
-  -- require("lazy").setup({ })
--- else
--- end
+if vim.g.vscode then
+    require("lazy").setup({
+      {
+        'tpope/vim-surround',
+        commit='3d188ed',
+      }
+    }, {})
+else
+    require("lazy").setup({
+      {
+        'tpope/vim-surround',
+        commit='3d188ed'
+      },
+      { -- Theme 
+       'shaunsingh/nord.nvim',
+        priority = 1000,
+        commit='80c1e53',
+        config = function()
+            vim.cmd.colorscheme 'nord'
+        end,
+      }
+    }, {})
+end
+
+
 
 -- GLOBAL CONFIG -----------------------------------------------
 -- Correct indentation in paste 
